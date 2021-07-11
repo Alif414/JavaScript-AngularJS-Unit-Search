@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+    <title>Units</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="frameworks/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5
+    elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the
+    page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container">
+        <div data-ng-init ="obj =
+                        [{code:'ICT10001',desc:'Problem Solving with ICT',type:'Core'},
+                            {code:'COS10005',desc:'Web Development',type:'Core'},
+                            {code:'INF10003',desc:'Introduction to Business Informaiton Systems',type:'Core'},
+                            {code:'INF10002',desc:'Database Analysis and Design',type:'Core'},
+                            {code:'COS10009',desc:'Introduction to Programming',type:'Core'},
+                            {code:'INF30029',desc:'Information Technology Project Management',type:'Core'},
+                            {code:'ICT30005',desc:'Proffesional Issues in Information Technology',type:'Core'},
+                            {code:'ICT30001',desc:'Information Technology Project',type:'Core'},
+                            {code:'COS20001',desc:'User-Centred Design',type:'Software Development'},
+                            {code:'TNE10005',desc:'Network Administration',type:'Software Development'},
+                            {code:'COS20016',desc:'Operating System Configuration',type:'Software Development'},
+                            {code:'SWE20001',desc:'Development Project 1- Tools and Practices',type:'Software Development'},
+                            {code:'COS20007',desc:'Object Oriented Programming',type:'Software Development'},
+                            {code:'COS30015',desc:'IT Security',type:'Software Development'},
+                            {code:'COS30043',desc:'Interface Design and Development',type:'Software Development'},
+                            {code:'COS30017',desc:'Software Development for Mobile Devices',type:'Software Development'},
+                            {code:'INF20012',desc:'Enterprise Systems',type:'Systems Analysis'},
+                            {code:'ACC10017',desc:'Financial Information for Decision Making',type:'Systems Analysis'},
+                            {code:'INF20003',desc:'Requirements Analysis and Modelling',type:'Systems Analysis'},
+                            {code:'ACC20014',desc:'Management Decision Making',type:'Systems Analysis'},
+                            {code:'INF30005',desc:'Business Process Management',type:'Systems Analysis'},
+                            {code:'INF30003',desc:'Business Information Systems Analaysis',type:'Systems Analysis'},
+                            {code:'INF30020',desc:'Information Systems Risk and Security',type:'Systems Analysis'},
+                            {code:'INF30001',desc:'Systems Acquisition and Implementation Management',type:'Systems Analysis'}]">
+            <!-- Initialised all units' data -->
+
+
+            <div class="row"><h1>BICT Unit Search Filter</h1></div>
+
+            <div class="row">
+                <div class="col-md-4"><strong>Code: </strong></div>
+                <input type="text" name="obj.code" id="obj.code" data-ng-model="obj.code" />
+            </div>
+             <div class="row">
+                <div class="col-md-4"><strong>Description: </strong></div>
+                <input type="text" name="obj.desc" id="obj.desc" data-ng-model="obj.desc" />
+            </div>
+            <!-- 2 boxes which will read text given by user -->
+
+
+            <div class="row">
+                <div class ="col-lg-4">
+                    <strong>Core</strong>
+                    <input type="radio" name="objUnit" id="Core" value="Core" required="required" data-ng-model="objUnit.type" />
+                    <br/><strong>Software Development</strong>
+                    <input type="radio" name="objUnit" id="Software Development" value="Software Development" required="required" data-ng-model="objUnit.type" />
+                    <br/><strong>Systems Analysis</strong>
+                    <input type="radio" name="objUnit" id="Systems Analysis" value="Systems Analysis" required="required" data-ng-model="objUnit.type" />
+                    <br/><strong>All</strong>
+                    <input type="radio" name="objUnit" id="all" value="" required="required" data-ng-model="objUnit.type" ng-checked="true" />
+                </div>
+            </div>
+            <!-- Radio buttons with ngModels that will have the 3 types -->
+
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Credit Points</th>
+                        <th>Type</th>
+                    </tr>
+                    <tr data-ng-repeat="o in obj | filter:obj.code | filter: obj.desc | filter: objUnit">
+                    <!-- 3 kinds of filters given, first two will read user's text to compare their text with the units, while the other is for the radio button to filter based on type -->
+                        <td>
+                            {{o.code}}
+                        </td>
+                        <td>
+                            {{o.desc}}
+                        </td>
+                        <td>
+                            12.5
+                        </td>
+                        <td>
+                            {{o.type}}
+                        </td>
+                        <!-- Will show the full table of the subjects and then can be filtered depending on the user's search -->
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
+    <script src="frameworks/js/jquery.min.js"></script>
+    <!-- All Bootstrap plug-ins file -->
+    <script src="frameworks/js/bootstrap.min.js"></script>
+    <!-- Basic AngularJS -->
+    <script src="frameworks/js/angular.min.js"></script>
+</body>
+</html>
